@@ -108,14 +108,14 @@ function formatFieldsToComboBox(fields?: IndexPatternField[]) {
   });
 }
 
-export const MonitorCallIdApp = ({
+export const SearchForIdApp = ({
   basename,
   notifications,
   uiSettings,
   http,
   navigation,
   data,
-}: MonitorCallIdAppDeps) => {
+}: SearchForIdAppDeps) => {
 
   // Use React hooks to manage state.
 
@@ -435,7 +435,7 @@ function setResponse(response: IKibanaSearchResponse) {
                 <EuiTitle size="l">
                   <h1>
                     <FormattedMessage
-                      id="monitorCallId.helloWorldText"
+                      id="searchForId.helloWorldText"
                       defaultMessage="{name}"
                       values={{ name: PLUGIN_NAME }}
                     />
