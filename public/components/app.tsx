@@ -74,7 +74,7 @@ import { getEsQueryConfig, buildEsQuery } from '../../../../src/plugins/data/com
 
 import { PLUGIN_ID, PLUGIN_NAME, INDEX_NAME } from '../../common';
 
-interface MonitorCallIdAppDeps {
+interface SearchForIdAppDeps {
   basename: string;
   notifications: CoreStart['notifications'];
   uiSettings: CoreStart['uiSettings'];
@@ -379,7 +379,7 @@ function setResponse(response: IKibanaSearchResponse) {
     console.log("onSearchHandler const searchCallID: ", searchCallID);
     // Use the core http service to make a request to the server API.
     try {
-      const response = await http.get('/api/monitor_call_id/search_callID', {
+      const response = await http.get('/api/search_id/search_ID', {
       query: { searchCallID }
       });
 
@@ -403,8 +403,8 @@ function setResponse(response: IKibanaSearchResponse) {
       console.log("response", response);
     };
     notifications.toasts.addSuccess(
-      i18n.translate('monitorCallId.dataUpdated', {
-        defaultMessage: 'CallID Searched',
+      i18n.translate('searchForId.dataUpdated', {
+        defaultMessage: 'ID Searched',
       })
     );
     console.log("onSearchHandler: success");
@@ -447,8 +447,8 @@ function setResponse(response: IKibanaSearchResponse) {
                   <EuiTitle>
                     <h2>
                       <FormattedMessage
-                        id="monitorCallId.congratulationsTitle"
-                        defaultMessage="Enter a CallID value"
+                        id="searchForId.congratulationsTitle"
+                        defaultMessage="Enter an ID value"
                       />
                     </h2>
                   </EuiTitle>
@@ -469,7 +469,7 @@ function setResponse(response: IKibanaSearchResponse) {
 		      </EuiFlexItem>
  		      <EuiFlexItem grow={false}>
                         <EuiButton type="primary" size="s" onClick={onSearchHandler}>
-                          <FormattedMessage id="monitorCallId.buttonText" defaultMessage="Search" />
+                          <FormattedMessage id="searchForId.buttonText" defaultMessage="Search" />
                         </EuiButton>
                       </EuiFlexItem>
 		    </EuiFlexGroup>

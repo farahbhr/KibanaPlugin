@@ -1,7 +1,7 @@
 {
-  "prefix": "monitorCallId",
+  "prefix": "searchForId",
   "paths": {
-    "monitorCallId": "."
+    "searchForId": "."
   },
   "translations": ["translations/ja-JP.json"]
 }

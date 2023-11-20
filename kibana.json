@@ -1,12 +1,12 @@
 {
-  "id": "monitorCallId",
+  "id": "searchForId",
   "version": "1.0.0",
   "kibanaVersion": "kibana",
   "owner": {
     "name": "Farah",
     "githubTeam": ""
   },
-  "description": "A kibana plugin that tracks a callID in the logs",
+  "description": "A kibana plugin that tracks an ID in the logs",
   "server": true,
   "ui": true,
   "requiredPlugins": ["navigation", "data"],

@@ -4,7 +4,7 @@ import { schema } from '@kbn/config-schema';
 export function defineRoutes({ router, logger, clusterClient }) {
     router.get(
     {
-      path: '/api/monitor_call_id/search_callID',
+      path: '/api/search_id/search_ID',
       validate: false,
     },
     async (context, request, response) => {
@@ -12,8 +12,8 @@ export function defineRoutes({ router, logger, clusterClient }) {
       console.log("request: ",request);
 
       const searchParams = Object.fromEntries(request.url.searchParams); // Convert URLSearchParams object to plain object
-      const searchCallID = searchParams.searchCallID; // Retrieve searchCallID from searchParams
-      console.log("searchCallID: ",searchCallID);
+      const searchID = searchParams.searchID; // Retrieve searchID from searchParams
+      console.log("searchCallID: ",searchID);
       
       //Extract ID startTime dynamically
       const { body: extractStartTime } = await client.search({
@@ -25,12 +25,12 @@ export function defineRoutes({ router, logger, clusterClient }) {
 			      should: [
 			        {
 			          match_phrase: {
-				  LogMessage: "Begin ID = "+searchCallID
+				  LogMessage: "Begin ID = "+searchID
 			          }
 			        },
 			        {
 			          match_phrase: {
-			            LogMessage: "creating new Id "+searchCallID
+			            LogMessage: "creating new Id "+searchID
 			          }
 			        }
 			      ]
@@ -56,12 +56,12 @@ export function defineRoutes({ router, logger, clusterClient }) {
                               should: [
                                 {
                                   match_phrase: {
-                                    LogMessage: "end Id"+searchCallID
+                                    LogMessage: "end Id"+searchID
                                   }
                                 },
                                 {
                                   match_phrase: {
-                                    LogMessage: "Destroying ID = "+searchCallID
+                                    LogMessage: "Destroying ID = "+searchID
                                   }
                                 }
                               ]
@@ -74,7 +74,7 @@ export function defineRoutes({ router, logger, clusterClient }) {
         const endTime = extractEndTime.hits.hits[lastHitIndex]._source.EndTime;
         console.log("endTime: ", endTime);
 
-	//Elasticsearch request to extract all the logs lines related to a callID
+	//Elasticsearch request to extract all the logs lines related to an ID
         const { body: result } = await client.search({
         index: 'filebeat-*',
         size:10000, 
@@ -119,7 +119,7 @@ export function defineRoutes({ router, logger, clusterClient }) {
             should: [
 	            {
                 term: {
-                  "ID.keyword": searchCallID
+                  "ID.keyword": searchID
                 }
               }
             ]

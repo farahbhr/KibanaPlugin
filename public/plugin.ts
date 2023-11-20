@@ -3,8 +3,8 @@ import { AppMountParameters, CoreSetup, CoreStart, Plugin } from '../../../src/c
 import { DataPublicPluginStart, DataPublicPluginSetup } from '../../../src/plugins/data/public';
 
 import {
-  MonitorCallIdPluginSetup,
-  MonitorCallIdPluginStart,
+  SearchForIdPluginSetup,
+  SearchForIdPluginStart,
   AppPluginStartDependencies,
 } from './types';
 import { PLUGIN_NAME } from '../common';
@@ -16,15 +16,15 @@ export interface AppPluginStartDependencies{
 
 }
 
-export class MonitorCallIdPlugin
-  implements Plugin<MonitorCallIdPluginSetup, MonitorCallIdPluginStart>
+export class SearchForIdPlugin
+  implements Plugin<SearchForIdPluginSetup, SearchForIdPluginStart>
 {
-   public setup(core: CoreSetup): MonitorCallIdPluginSetup {
+   public setup(core: CoreSetup): SearchForIdPluginSetup {
   // Register an application into the side navigation menu
 
   console.log("public setup");
     core.application.register({
-      id: 'monitorCallId',
+      id: 'searchForId',
       title: PLUGIN_NAME,
       async mount(params: AppMountParameters) {
         // Load application bundle
@@ -39,7 +39,7 @@ export class MonitorCallIdPlugin
     // Return methods that should be available to other plugins
     return {
       getGreeting() {
-        return i18n.translate('monitorCallId.greetingText', {
+        return i18n.translate('searchForId.greetingText', {
           defaultMessage: 'Hello from {name}!',
           values: {
             name: PLUGIN_NAME,

@@ -6,13 +6,13 @@ import {
   Logger,
 } from '../../../src/core/server';
 
-import { MonitorCallIdPluginSetup, MonitorCallIdPluginStart } from './types';
+import { SearchForIdPluginSetup, SearchForIdPluginStart } from './types';
 import { defineRoutes , retryClusterCall  } from './routes';
 
 import { INDEX_NAME } from '../common';
 
-export class MonitorCallIdPlugin
-  implements Plugin<MonitorCallIdPluginSetup, MonitorCallIdPluginStart>
+export class SearchForIdPlugin
+  implements Plugin<SearchForIdPluginSetup, SearchForIdPluginStart>
 {
   private readonly logger: Logger;
 
@@ -21,7 +21,7 @@ export class MonitorCallIdPlugin
   }
 
   public setup(core: CoreSetup) {
-    this.logger.debug('monitorCallID: Server Setup');
+    this.logger.debug('SearchForId: Server Setup');
 
     this.router = core.http.createRouter();
 
@@ -29,13 +29,13 @@ export class MonitorCallIdPlugin
     // Register server side APIs
     // router.get({ path: '/path', validate: false }, (context, req, res) => res.ok({ content: 'ok' }));
 
-    this.logger.debug('monitorCallID: finish Server Setup');
+    this.logger.debug('SearchForId: finish Server Setup');
 
     return {};
   }
 
   public start(core: CoreStart) {
-    this.logger.debug('monitorCallID: Server Started');
+    this.logger.debug('SearchForId: Server Started');
 
     defineRoutes({
       logger: this.logger,
@@ -47,6 +47,6 @@ export class MonitorCallIdPlugin
   }
 
   public stop() {
-    this.logger.debug('monitorCallID: Server Stop');
+    this.logger.debug('SearchForId: Server Stop');
   }
 }
