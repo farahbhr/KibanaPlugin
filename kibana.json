@@ -1,0 +1,14 @@
+{
+  "id": "monitorCallId",
+  "version": "1.0.0",
+  "kibanaVersion": "kibana",
+  "owner": {
+    "name": "Farah",
+    "githubTeam": ""
+  },
+  "description": "A kibana plugin that tracks a callID in the logs",
+  "server": true,
+  "ui": true,
+  "requiredPlugins": ["navigation", "data"],
+  "optionalPlugins": []
+}
